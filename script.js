@@ -1,6 +1,8 @@
+// constantes para os elementos de input e a lista
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+// Função de adicionar e salvar
 function adicionar(){
     if (inputBox.value == ''){
         alert("Adicione algo para ser feito!")
@@ -15,7 +17,7 @@ function adicionar(){
     inputBox.value = "";
     saveData()
 }   
-
+// evento de clickar para riscar ou remover a tarefa
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
@@ -26,10 +28,12 @@ listContainer.addEventListener("click", function(e){
     }
 }, false);
 
+// Função de salvar dados
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
 }
 
+// Função de carregar dados
 function showTask(){
     listContainer.innerHTML = localStorage.getItem("data");
 }
